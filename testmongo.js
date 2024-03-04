@@ -1,7 +1,8 @@
+require('dotenv').config();
 const { MongoClient } = require("mongodb");
 
 // The uri string must be the connection string for the database (obtained on Atlas).
-const uri = "mongodb+srv://testUser:Rumyuya12_!@cluster0.5tnwugb.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0";
+const uri = process.env.MONGODB_URI;
 
 // --- This is the standard stuff to get it to work on the browser
 const express = require('express');
