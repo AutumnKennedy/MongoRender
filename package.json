@@ -2,18 +2,19 @@
   "name": "ckMongoTest",
   "version": "1.0.0",
   "description": "CKs Express Mongo Test on Render",
-  "main": "testmongo.js",
+  "main": "expressAuth.js",
   "repository": "https://github.com/AutumnKennedy/MongoRender",
   "author": "CK",
   "license": "MIT",
   "private": false,
   "scripts": {
-    "start": "node testmongo.js"
+    "start": "node expressAuth.js"
   },
   "dependencies": {
     "dotenv": "^16.4.5",
     "express": "^4.18.2",
-    "mongodb": "^5.1.0"
+    "mongodb": "^5.1.0",
+    "uuid": "^9.0.1"
   },
   "engines": {
     "node": ">=14"
