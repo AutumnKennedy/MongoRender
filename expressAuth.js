@@ -63,6 +63,7 @@ app.get('/', function(req, res) {
 
 
 // Route to access database:
+//Code Marker 2 ---------------------------------------------------------------
 app.post('/api/mongo/register', function(req, res) {
     const { username, password } = req.body;
     
@@ -70,6 +71,7 @@ app.post('/api/mongo/register', function(req, res) {
   
     async function run() {
       try {
+        //Code Maker 1 ---------------------------------------------------------
         const database = client.db('akmdb');
         const users = database.collection('AuthCMPS415');
   
@@ -94,6 +96,7 @@ app.post('/api/mongo/register', function(req, res) {
 
 app.post('/api/mongo/login', function(req, res) {
     const { username, password } = req.body;
+    //Code Marker 4 ----------------------------------------------------------------------------
     const viewCookies = `<p><a href="/api/mongo/view-cookies">View Active Cookies</a></p>`;
     const clearCookies = `<p><a href="/api/mongo/clear-cookies">Clear Cookies</a></p>`;
     
@@ -110,17 +113,20 @@ app.post('/api/mongo/login', function(req, res) {
         console.log(user);
   
         if (user) {
+          // Code marker 3.2 ------------------------------------------------------------
             const authToken = uuidv4();
             res.cookie('authToken', authToken, { 
               maxAge: 60000, 
               httpOnly: true
             });
+             //Code Marker 4 ------------------------------------------------------------
             res.send(`
               <p>Login successful<p>
               ${viewCookies}
               ${clearCookies}
             `);
         } else {
+          //Code marker 3.1 ---------------------------------------------------------------
             res.send(`
           <p>Invalid username or password<p>
           <p>Return to  <a href="/">login</a></p>
@@ -135,10 +141,12 @@ app.post('/api/mongo/login', function(req, res) {
     run().catch(console.dir);
   });
 
+  //Code Marker 4 --------------------------------------------------------------
 app.get('/api/mongo/view-cookies', function(req, res) {
   res.send(`Active Cookies: ${JSON.stringify(req.cookies)}`);
 });  
 
+//Code Marker 5 ----------------------------------------------------------------
 app.get('/api/mongo/clear-cookies', function(req, res) {
   res.clearCookie('authToken');
   res.send(`
